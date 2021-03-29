@@ -3,9 +3,16 @@ name = "cse-community"
 version = "0.1.0"
 description = ""
 authors = ["Dong-Young Kim <31337.persona@gmail.com>"]
+packages = [
+  { include = "app" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+Flask = "^1.1.2"
+SQLAlchemy = "^1.4.3"
+marshmallow = "^3.10.0"
+flask-smorest = "^0.29.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.812"
