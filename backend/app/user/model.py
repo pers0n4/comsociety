@@ -22,12 +22,12 @@ class User(Base):
     deleted_at = Column(DateTime)
 
     @hybrid_property
-    def password(self):
+    def password(self):  # type: ignore
         return self._password
 
-    @password.setter
-    def account_pw(self, value):
+    @password.setter  # type: ignore
+    def password(self, value):
         self._password = generate_password_hash(value)
 
     def check_password(self, value):
-        return check_password_hash(self.account_pw, value)
+        return check_password_hash(self.password, value)
