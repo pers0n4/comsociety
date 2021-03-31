@@ -6,7 +6,7 @@ class Config(object):
 
     SQLALCHEMY_URL = "postgresql+psycopg2://user:qwerty@localhost:5432/development"
 
-    API_TITLE = "cse-community"
+    API_TITLE = "comsociety"
     API_VERSION = "0.1.0"
     OPENAPI_VERSION = "3.0.3"
     OPENAPI_URL_PREFIX = "/docs"

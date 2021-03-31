@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cse-community"
+name = "comsociety"
 version = "0.1.0"
 description = ""
 authors = ["Dong-Young Kim <31337.persona@gmail.com>"]
