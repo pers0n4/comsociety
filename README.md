@@ -1,5 +1,7 @@
 # Comsociety
 
+## Table of Contents
+
 - [Contributing](#contributing)
   - [Branching](#branching)
   - [Commit Message](#commit-message)
@@ -22,12 +24,15 @@
 1. 처리하려는 작업에 해당하는 issue 생성
 2. issue에 해당하는 branch 생성
 3. 생성한 branch에 `commit`, `push`
-4. 작업이 완료된 working branch는 최신 `main` 이력을 `rebase` 방식으로 `pull`한 후 `main` branch로 **Pull Request** 요청
+4. 작업이 완료된 working branch는 `main`의 최신 이력을 `rebase` 방식으로 `pull`한 후 `main` branch로 **Pull Request** 요청
    - reviewer는 @pers0n4 및 해당 PR이 영향을 미치는 관계자 지정
 5. review 결과에 따라 merge 진행
-   1. PR이 승인될 경우 스스로 한번 더 검토 후 직접 merge
-   2. PR이 보류될 경우 문제 처리한 후 직접 merge
-   3. PR이 반려될 경우 ㅁ
+   - Approved PR의 경우 해당 PR을 승인한 reviewer가 merge
+   - PR이 반려될 경우 문제 사항을 해결한 후 author가 직접 merge
+
+> - author: issue 및 PR을 생성한 사람
+> - reviewer: PR 및 코드를 리뷰하는 사람
+> - approved: PR이 리뷰어에 의해 승인(검증)된 상태
 
 ### Branching
 
@@ -46,6 +51,7 @@
   │            │
   │            └─⫸ 커밋이 처리하는 내용 요약. 커밋 메시지 마지막에 마침표는 붙이지 않음.
   │
+
   └─⫸ build|ci|docs|feat|fix|perf|refactor|test 중 하나
 ```
 
