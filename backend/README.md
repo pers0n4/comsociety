@@ -1,4 +1,3 @@
-
 # Comsociety Backend
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
@@ -21,7 +20,7 @@
 
 ## Installation
 
-***Prerequisites***
+**_Prerequisites_**
 
 - 이 프로젝트를 실행하기 위해서 3.8 버전 이상의 python 사용을 추천한다
 - dependency 간 충돌 등을 방지하기 위해 가상 python 환경 구성을 추천한다
