@@ -1,0 +1,5 @@
+// for eslint by pre-commit
+{
+  "extends": "./frontend/tsconfig.json",
+  "include": ["frontend/src/**/*"]
+}

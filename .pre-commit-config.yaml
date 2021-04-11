@@ -4,10 +4,11 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0
     hooks:
+      - id: check-merge-conflict
       - id: trailing-whitespace
       - id: end-of-file-fixer
-      - id: check-toml
       - id: check-yaml
+      - id: check-toml
 
   - repo: https://github.com/pycqa/isort
     rev: 5.8.0
@@ -26,3 +27,10 @@ repos:
     hooks:
       - id: black
         language_version: python3 # Should be a command that runs python3.6+
+        files: \.py$
+
+  - repo: https://github.com/okonet/lint-staged
+    rev: v10.5.4
+    hooks:
+      - id: lint-staged
+        name: lint-staged

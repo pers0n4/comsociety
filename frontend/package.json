@@ -66,13 +66,6 @@
       "last 1 safari version"
     ]
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{html,json,md}": "prettier --write"
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
