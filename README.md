@@ -2,11 +2,12 @@
 
 ## Table of Contents
 
+- [Prerequisite](#prerequisite)
+  - [Installation](#installation)
 - [Contributing](#contributing)
   - [Branching](#branching)
   - [Commit Message](#commit-message)
     - [Type](#type)
-  - [Commands](#commands)
 
 ```text
 .
@@ -17,7 +18,36 @@
 +-- ...
 ```
 
-이 Repository는 monorepo 형태로 관리됩니다. README에서는 프로젝트 전반에 관한 워크플로우를 소개하며, 프로젝트 세부 규칙은 각 프로젝트 경로의 README에서 안내합니다.
+이 Repository는 monorepo 형태로 관리됩니다. README에서는 프로젝트 전반에 관한 내용을 소개하며, 프로젝트 세부 규칙은 각 프로젝트 경로의 README에서 안내합니다.
+
+## Prerequisite
+
+- Node.js v12+
+- Python 3.6+
+
+프로젝트를 실행하기 위해서는 Python 3와 Node.js 런타임이 필요합니다. Python의 경우 프로젝트 실행 환경 격리를 위해 `venv` 또는 `virtualenv` 등의 도구를 사용하기를 권장합니다.
+
+### Installation
+
+```shell
+git clone https://github.com/pers0n4/yoonyaho.git
+cd yoonyaho
+pip install -r requirements.txt
+pre-commit install
+
+cd frontend
+npm install
+# 또는
+yarn
+
+# 프론트엔드만 개발하는 경우 생략 가능
+cd ../backend
+poetry install
+# 또는
+pip install -r requirements.txt
+```
+
+이 프로젝트에서는 git hooks를 통해 코드 스타일을 일관적으로 유지할 수 있도록 합니다. git hooks 적용을 위해 hooks에서 사용되는 의존 패키지들을 설치해야 합니다.
 
 ## Contributing
 
@@ -25,22 +55,32 @@
 2. issue에 해당하는 branch 생성
 3. 생성한 branch에 `commit`, `push`
 4. 작업이 완료된 working branch는 `main`의 최신 이력을 `rebase` 방식으로 `pull`한 후 `main` branch로 **Pull Request** 요청
-   - reviewer는 @pers0n4 및 해당 PR이 영향을 미치는 관계자 지정
 5. review 결과에 따라 merge 진행
-   - Approved PR의 경우 해당 PR을 승인한 reviewer가 merge
-   - PR이 반려될 경우 문제 사항을 해결한 후 author가 직접 merge
-
-> - author: issue 및 PR을 생성한 사람
-> - reviewer: PR 및 코드를 리뷰하는 사람
-> - approved: PR이 리뷰어에 의해 승인(검증)된 상태
 
 ### Branching
 
-- `{back,front}/ISSUE_NUMBER-description`
-  - e.g. 백엔드 영역의 유저 인증과 관련된 2번 이슈
-    - `back/2-user-authentication`
-  - e.g. 프론트엔드 영역의 화면 레이아웃 구성과 관련된 16번 이슈
-    - `front/16-layout`
+> `{back,front}/ISSUE_NUMBER-description`
+
+- e.g. 백엔드 영역의 유저 인증과 관련된 2번 이슈
+  - `back/2-user-authentication`
+- e.g. 프론트엔드 영역의 화면 레이아웃 구성과 관련된 16번 이슈
+  - `front/16-layout`
+
+```shell
+# branch 생성 단계
+git switch main
+git pull origin main --rebase
+git switch -c $BRANCH_NAME
+
+# 작업 단계
+git commit ...
+git push origin $BRANCH_NAME
+
+# PR 보내기 전
+git pull origin main
+git rebase main
+git push origin $BRANCH_NAME
+```
 
 ### Commit Message
 
@@ -65,21 +105,3 @@
 - **perf**: 성능 향상 작업
 - **reactor**: 새로운 기능을 추가하거나, 버그를 수정하지 않는 코드 개선 작업
 - **test**: 테스팅 관련
-
-### Commands
-
-```shell
-# branch 생성 단계
-git switch main
-git pull origin main --rebase
-git switch -c $BRANCH_NAME
-
-# 작업 단계
-git commit ...
-git push origin $BRANCH_NAME
-
-# PR 보내기 전
-git pull origin main
-git rebase main
-git push origin $BRANCH_NAME
-```
