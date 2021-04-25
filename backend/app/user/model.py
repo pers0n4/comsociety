@@ -13,10 +13,10 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
-    id_number = Column(String(8), nullable=False)
     name = Column(String(30), nullable=False)
     email = Column(String(30), nullable=False)
     _password = Column("password", String, nullable=False)
+    identification_number = Column(String(8), nullable=False)
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
     deleted_at = Column(DateTime)
