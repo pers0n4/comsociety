@@ -8,15 +8,9 @@ from database import Database
 db = Database()
 
 
-def create_app():
+def create_app(environment="development"):
     app = Flask(__name__, instance_relative_config=True)
-
-    if app.config.get("FLASK_ENV") == "development":
-        app.config.from_object("config.DevelopmentConfig")
-    elif app.config.get("FLASK_ENV") == "test":
-        app.config.from_object("config.TestConfig")
-    else:
-        app.config.from_object("config.ProductionConfig")
+    app.config.from_object(f"config.{environment.capitalize()}Config")
 
     db.init_app(app)
     api = Api(app)

@@ -6,7 +6,7 @@ from app import create_app, init_db
 
 @pytest.fixture(scope="session")
 def app():
-    app = create_app()
+    app = create_app("testing")
 
     with app.app_context():
         init_db()

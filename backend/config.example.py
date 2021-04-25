@@ -1,10 +1,6 @@
 class Config(object):
-    DEBUG = False
-    TESTING = False
     SECRET_KEY = "SECRET_KEY"
     JSON_SORT_KEYS = False
-
-    SQLALCHEMY_URL = "postgresql+psycopg2://user:qwerty@localhost:5432/development"
 
     API_TITLE = "comsociety"
     API_VERSION = "0.1.0"
@@ -20,17 +16,16 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    ENV = "production"
+    SQLALCHEMY_URL = "postgresql+psycopg2://user:qwerty@localhost:5432/development"
 
 
 class DevelopmentConfig(Config):
-    ENV = "development"
     DEBUG = True
 
+    SQLALCHEMY_URL = "postgresql+psycopg2://user:qwerty@localhost:5432/development"
 
-class TestConfig(Config):
-    ENV = "test"
-    DEBUG = True
+
+class TestingConfig(Config):
     TESTING = True
 
     SQLALCHEMY_URL = "postgresql+psycopg2://test:test@localhost:5432/test"
