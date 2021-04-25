@@ -8,6 +8,6 @@ jinja2==2.11.3; python_version >= "3.6" and python_full_version < "3.0.0" or pyt
 markupsafe==1.1.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
 marshmallow==3.11.1; python_version >= "3.5"
 psycopg2-binary==2.8.6; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.4.0")
-sqlalchemy==1.4.7; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.6.0")
+sqlalchemy==1.4.11; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.6.0")
 webargs==7.0.1; python_version >= "3.6"
 werkzeug==1.0.1; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
