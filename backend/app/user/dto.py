@@ -5,7 +5,7 @@ class UserSchema(Schema):
     id = fields.UUID(dump_only=True)
     name = fields.String(required=True)
     email = fields.Email(required=True)
-    password = fields.String(required=True)
+    password = fields.String(required=True, load_only=True)
     identification_number = fields.String(required=True)
     created_at = fields.DateTime(dump_only=True)
     updated_at = fields.DateTime(dump_only=True)
