@@ -22,3 +22,8 @@ def client(app: Flask):
 @pytest.fixture(scope="session")
 def runner(app: Flask):
     return app.test_cli_runner()
+
+
+@pytest.fixture(scope="module")
+def state():
+    return dict()
