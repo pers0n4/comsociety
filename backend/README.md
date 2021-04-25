@@ -7,10 +7,7 @@
 ## Table of Contents
 
 - [Installation](#installation)
-  - [Poetry](#poetry)
-  - [pip](#pip)
 - [Usages](#usages)
-  - [Initialize atabase](#initialize-atabase)
   - [Run server](#run-server)
   - [Run tests](#run-tests)
 - [Style Guide](#style-guide)
@@ -20,35 +17,21 @@
 
 ## Installation
 
-**_Prerequisites_**
-
-- 이 프로젝트를 실행하기 위해서 3.8 버전 이상의 python 사용을 추천한다
-- dependency 간 충돌 등을 방지하기 위해 가상 python 환경 구성을 추천한다
-- package 및 dependencies를 관리하기 위해 [Poetry](https://python-poetry.org/) 사용을 추천한다
-
-### Poetry
-
-```shell
+```bash
 poetry install [--no-root]
-```
-
-### pip
-
-```shell
+# or
 pip install -r requirements.txt
+
 ```
 
 ## Usages
 
-### Initialize atabase
-
-```shell
-flask init-db
-```
-
 ### Run server
 
 ```shell
+# 데이터베이스 초기화
+flask init-db
+
 # 개발 환경으로 실행
 FLASK_ENV=development flask run
 
@@ -63,6 +46,10 @@ flask run
 ```shell
 pytest
 pytest -sv
+
+# coverage
+coverage run -m pytest
+coverage report -m
 ```
 
 ## Style Guide
