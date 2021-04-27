@@ -12,6 +12,7 @@ SQLAlchemy = "^1.4.3"
 marshmallow = "^3.10.0"
 flask-smorest = "^0.29.0"
 psycopg2-binary = "^2.8.6"
+alembic = "^1.5.8"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.812"
