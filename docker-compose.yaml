@@ -18,6 +18,7 @@ services:
   flask:
     build:
       context: ./backend
+      dockerfile: Dockerfile.development
     ports:
       - "5000:5000"
     networks:
