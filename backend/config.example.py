@@ -16,13 +16,13 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_URL = "postgresql+psycopg2://user:qwerty@localhost:5432/development"
+    SQLALCHEMY_URL = "postgresql+psycopg2://user:pass@postgres:5432/development"
 
 
 class DevelopmentConfig(Config):
     DEBUG = True
 
-    SQLALCHEMY_URL = "postgresql+psycopg2://user:qwerty@localhost:5432/development"
+    SQLALCHEMY_URL = "postgresql+psycopg2://user:pass@localhost:5432/development"
 
 
 class TestingConfig(Config):
