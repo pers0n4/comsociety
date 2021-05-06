@@ -1,7 +1,7 @@
 from datetime import datetime
 from uuid import uuid4
 
-from flask_bcrypt import check_password_hash, generate_password_hash
+import bcrypt
 from sqlalchemy import Column, DateTime, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.ext.hybrid import hybrid_property
@@ -27,7 +27,12 @@ class User(Base):
 
     @password.setter  # type: ignore
     def password(self, value):
-        self._password = generate_password_hash(value)
+        password = bytes(value, "utf-8")
+        salt = bcrypt.gensalt()
+
+        self._password = bcrypt.hashpw(password, salt)
 
     def check_password(self, value):
-        return check_password_hash(self.password, value)
+        password = bytes(value, "utf-8")
+
+        return bcrypt.checkpw(password, self._password)
