@@ -2,7 +2,9 @@ from abc import ABC, abstractmethod
 from contextlib import contextmanager
 from typing import Any, List, Optional
 
+import click
 from flask import Flask
+from flask.cli import with_appcontext
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session, scoped_session, sessionmaker
@@ -24,6 +26,15 @@ class Database:
             )
         )
 
+        @click.command("init-db")
+        @with_appcontext
+        def init_db_command():
+            """Clear the existing data and create new tables."""
+            self.init_db()
+            click.echo("Initialized the database.")
+
+        app.cli.add_command(init_db_command)
+
     @contextmanager
     def session(self):
         session: Session = self._session_factory()
@@ -40,6 +51,10 @@ class Database:
 
     def drop_all(self) -> None:
         Base.metadata.drop_all(self._engine)
+
+    def init_db(self):
+        self.drop_all()
+        self.create_all()
 
 
 class SQLAlchemyRepository(ABC):
