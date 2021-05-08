@@ -3,9 +3,9 @@ import os
 from flask import Flask
 from flask_smorest import Api
 
-from database import Database
+from database import SQLAlchemy
 
-db = Database()
+db = SQLAlchemy()
 
 
 def create_app(environment: str = "development"):

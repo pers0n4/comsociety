@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session, scoped_session, sessionmaker
 Base = declarative_base()
 
 
-class Database:
+class SQLAlchemy:
     def init_app(self, app: Flask) -> None:
         if not app.config.get("SQLALCHEMY_URL"):
             raise RuntimeError("SQLALCHEMY_URL is None.")

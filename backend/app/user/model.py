@@ -1,18 +1,16 @@
 from datetime import datetime
-from uuid import uuid4
 
 import bcrypt
 from sqlalchemy import Column, DateTime, String
-from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.ext.hybrid import hybrid_property
 
-from database import Base
+from database import UUID, Base, uuid4
 
 
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    id = Column(UUID, primary_key=True, default=uuid4)
     name = Column(String(30), nullable=False)
     email = Column(String(30), nullable=False)
     _password = Column("password", String, nullable=False)
