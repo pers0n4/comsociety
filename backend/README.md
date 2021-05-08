@@ -26,17 +26,20 @@ pip install -r requirements.txt
 
 ## Usages
 
-### Run server
+### Scripts
 
 ```shell
 # 데이터베이스 초기화
 flask init-db
 
+# 애플리케이션에 등록된 라우트
+flask routes
+
 # 개발 환경으로 실행
 FLASK_ENV=development flask run
 
 # 배포 환경으로 실행
-flask run
+FLASK_APP="app:create_app('production')" flask run
 ```
 
 \* `flask run` 명령어는 배포 환경으로 실행한다는 뜻일뿐, 실제 배포 환경에서 실행하는 명령어라는 뜻은 아님
