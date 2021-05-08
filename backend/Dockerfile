@@ -28,4 +28,4 @@ RUN set -eux; \
 COPY . .
 
 EXPOSE 5000
-CMD gunicorn --preload --workers=2 --bind=0.0.0.0:5000 'app:create_app("production")'
+CMD gunicorn --preload --workers=2 --bind=0.0.0.0:5000 "app:create_app('production')"
