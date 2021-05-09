@@ -25,8 +25,9 @@ def create_app(environment: str = "development"):
     db.init_app(app)
     api = Api(app)
 
-    from app import user
+    from app import auth, user
 
     api.register_blueprint(user.bp)
+    api.register_blueprint(auth.bp)
 
     return app
