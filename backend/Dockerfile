@@ -12,14 +12,11 @@ RUN set -eux; \
             build-base \
             python3-dev \
             py3-pip \
-            py3-cryptography \
-            rust \
-            cargo \
+            # for bcrypt
+            libffi-dev \
         && apk add --no-cache \
             libressl-dev \
             openssl-dev \
-            # for bcrypt
-            libffi-dev \
             # for PostgreSQL
             postgresql-dev \
         && pip install --no-cache-dir -r requirements.txt \
