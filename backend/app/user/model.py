@@ -28,9 +28,10 @@ class User(Base):
         password = bytes(value, "utf-8")
         salt = bcrypt.gensalt()
 
-        self._password = bcrypt.hashpw(password, salt)
+        self._password = bcrypt.hashpw(password, salt).decode("utf-8")
 
-    def check_password(self, value):
+    def check_password(self, value) -> bool:
         password = bytes(value, "utf-8")
+        hashed_password = self._password.encode("utf-8")
 
-        return bcrypt.checkpw(password, self._password)
+        return bcrypt.checkpw(password, hashed_password)
