@@ -31,7 +31,7 @@ const ToggleColorModeButton = () => {
   );
 };
 
-const HeaderContent = () => {
+const HeaderContent: React.FC = ({ children }) => {
   return (
     <>
       <Flex align="center" h="100%" justify="space-between" px="6" w="100%">
@@ -41,6 +41,7 @@ const HeaderContent = () => {
           </Link>
         </Flex>
         <Flex justify="flex-end">
+          {children}
           <ToggleColorModeButton />
         </Flex>
       </Flex>
@@ -48,7 +49,7 @@ const HeaderContent = () => {
   );
 };
 
-const Header: React.FC = () => {
+const Header: React.FC = ({ children }) => {
   const bg = useColorModeValue('white', 'gray.800');
   const ref = React.useRef<HTMLHeadingElement>(null);
   const [y, setY] = React.useState(0);
@@ -73,7 +74,7 @@ const Header: React.FC = () => {
       zIndex="3"
     >
       <chakra.div height="4.5rem" maxW="1200px" mx="auto">
-        <HeaderContent />
+        <HeaderContent>{children}</HeaderContent>
       </chakra.div>
     </chakra.header>
   );
