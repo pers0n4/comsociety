@@ -1,7 +1,7 @@
 {
   "frontend/src/**/*.{js,jsx,ts,tsx}": [
-    "prettier --write --config frontend/.prettierrc.json",
-    "eslint --fix --config frontend/.eslintrc.json"
+    "npx prettier --write --config frontend/.prettierrc.json",
+    "npx eslint --fix --config frontend/.eslintrc.json"
   ],
-  "*.{html,json,md}": "prettier --write"
+  "*.{html,json,md}": "npx prettier --write"
 }
