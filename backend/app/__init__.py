@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask_cors import CORS
 from flask_smorest import Api
 
 from database import SQLAlchemy
@@ -24,6 +25,7 @@ def create_app(environment: str = "development"):
 
     db.init_app(app)
     api = Api(app)
+    CORS(app)
 
     from app import auth, user
 
