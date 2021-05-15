@@ -203,6 +203,18 @@ docs = ["sphinx", "pallets-sphinx-themes", "sphinxcontrib-log-cabinet", "sphinx-
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "flask-cors"
+version = "3.0.10"
+description = "A Flask extension adding a decorator for CORS support"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Flask = ">=0.9"
+Six = "*"
+
+[[package]]
 name = "flask-smorest"
 version = "0.29.0"
 description = "Flask/Marshmallow-based REST API framework"
@@ -682,7 +694,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "b03b358550ae747c21335676b0aa0494462f8bda6c8987d3629c0f779279abf6"
+content-hash = "737548bd997f9dbf7d0e69e83bc00e93d73dbbbc7678ba67124922d772099749"
 
 [metadata.files]
 alembic = [
@@ -841,6 +853,10 @@ flake8 = [
 flask = [
     {file = "Flask-1.1.2-py2.py3-none-any.whl", hash = "sha256:8a4fdd8936eba2512e9c85df320a37e694c93945b33ef33c89946a340a238557"},
     {file = "Flask-1.1.2.tar.gz", hash = "sha256:4efa1ae2d7c9865af48986de8aeb8504bf32c7f3d6fdc9353d34b21f4b127060"},
+]
+flask-cors = [
+    {file = "Flask-Cors-3.0.10.tar.gz", hash = "sha256:b60839393f3b84a0f3746f6cdca56c1ad7426aa738b70d6c61375857823181de"},
+    {file = "Flask_Cors-3.0.10-py2.py3-none-any.whl", hash = "sha256:74efc975af1194fc7891ff5cd85b0f7478be4f7f59fe158102e91abb72bb4438"},
 ]
 flask-smorest = [
     {file = "flask-smorest-0.29.0.tar.gz", hash = "sha256:95c929b3e911bce89cbd25fcbd7c71ea4a693bfbe435e1dfaa6374dc2e1cf444"},
