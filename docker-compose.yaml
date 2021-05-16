@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.7"
 
 services:
   flask:
@@ -6,7 +6,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile.development
     ports:
-      - "5000:5000"
+      - "8000:5000"
     networks:
       - bridge
     depends_on:
