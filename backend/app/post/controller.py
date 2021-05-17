@@ -10,7 +10,9 @@ from database import TupleNotFound
 from .dto import CreatePostSchema, PostSchema, UpdatePostSchema
 from .service import PostService
 
-bp = Blueprint("post", __name__, url_prefix="/post", description="Operation about post")
+bp = Blueprint(
+    "post", __name__, url_prefix="/posts", description="Operation about post"
+)
 service = PostService()
 
 
