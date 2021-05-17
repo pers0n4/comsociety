@@ -1,0 +1,3 @@
+[submodule "backend/lib/textrank"]
+	path = backend/lib/textrank
+	url = https://github.com/lovit/textrank.git
