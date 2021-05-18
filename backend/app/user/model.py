@@ -12,9 +12,8 @@ class User(Base):
 
     id = Column(UUID, primary_key=True, default=uuid4)
     name = Column(String(30), nullable=False)
-    email = Column(String(30), nullable=False)
+    user_id = Column(String(8), nullable=False)
     _password = Column("password", String, nullable=False)
-    identification_number = Column(String(8), nullable=False)
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
     deleted_at = Column(DateTime)
