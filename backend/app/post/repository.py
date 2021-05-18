@@ -26,7 +26,7 @@ class PostRepository(SQLAlchemyRepository):
 
     def update(self, post: Post, data: Any) -> Post:
         with self.session_factory() as session:
-            post = session.query(Post).filter_by(Post.id == post.id).first()
+            post = session.query(Post).filter(Post.id == post.id).first()
             for key, value in data.items():
                 setattr(post, key, value)
             session.commit()

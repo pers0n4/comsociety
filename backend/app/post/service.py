@@ -16,7 +16,7 @@ class PostService:
         post = self._repository.add(**data)
         return post
 
-    def get_post_by_id(self, id: UUID, data: Any) -> Post:
+    def get_post_by_id(self, id: UUID) -> Post:
         post = self._repository.find_one(id=id)
         if post is None:
             raise TupleNotFound
@@ -26,7 +26,7 @@ class PostService:
         post = self._repository.find_one(id=id)
         if post is None:
             raise TupleNotFound
-        return post
+        return self._repository.update(post, data)
 
     def remove_by_id(self, id: UUID) -> None:
         post = self._repository.find_one(id=id)

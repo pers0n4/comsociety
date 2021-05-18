@@ -17,7 +17,7 @@ service = PostService()
 
 
 @bp.route("/")
-class PostController(MethodView):
+class PostsController(MethodView):
     @bp.arguments(CreatePostSchema)
     @bp.response(201, PostSchema)
     def post(self, data: Any):
@@ -35,9 +35,9 @@ class PostController(MethodView):
         return posts
 
 
-@bp.route("/detail/<uuid:id>")
+@bp.route("/<uuid:id>")
 class PostController(MethodView):
-    @bp.arguments(PostSchema)
+    @bp.response(200, PostSchema)
     @bp.alt_response(404, ErrorSchema)
     def get(self, id: UUID):
         """Get post by id"""
@@ -50,17 +50,17 @@ class PostController(MethodView):
     @bp.arguments(UpdatePostSchema)
     @bp.response(200, PostSchema)
     @bp.alt_response(404, ErrorSchema)
-    def update(self, id: UUID):
+    def patch(self, data, id: UUID):
         """Update post by id"""
         try:
-            post = service.update_by_id(id)
+            post = service.update_by_id(id, data)
             return post
         except TupleNotFound:
             abort(404)
 
     @bp.response(204)
     @bp.alt_response(404, ErrorSchema)
-    def remove(self, id: UUID):
+    def delete(self, id: UUID):
         """Remove post by id"""
         try:
             service.remove_by_id(id)
