@@ -13,6 +13,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Container from './components/layouts/Container';
 import Header from './components/layouts/Header';
+import Home from './pages/home';
 
 const App: React.FC = () => {
   return (
@@ -34,6 +35,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/">
+              <Home />
             </Route>
           </Switch>
         </Container>

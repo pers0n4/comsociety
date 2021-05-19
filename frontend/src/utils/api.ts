@@ -1,3 +1,4 @@
+import type { AxiosResponse } from 'axios';
 import axios from 'axios';
 
 const BASE_URL = 'http://dongyoung.kim:8000/';
@@ -18,3 +19,8 @@ api.interceptors.response.use(
 );
 
 export default api;
+
+export const Api = {
+  textrank: <T>(data: string[]): Promise<AxiosResponse<T>> =>
+    api.post('/data/', { data }, { timeout: 30000 }),
+};
