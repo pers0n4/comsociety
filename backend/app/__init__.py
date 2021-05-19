@@ -27,10 +27,11 @@ def create_app(environment: str = "development"):
     api = Api(app)
     CORS(app)
 
-    from app import auth, post, user
+    from app import auth, data, post, user
 
     api.register_blueprint(user.bp)
     api.register_blueprint(auth.bp)
     api.register_blueprint(post.bp)
+    api.register_blueprint(data.bp)
 
     return app
