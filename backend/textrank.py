@@ -40,16 +40,18 @@ keyword_summarizer = KeywordSummarizer(
     min_cooccurrence=1,
 )
 
-with open(f"./nlp/{sys.argv[1]}.txt") as f:
-    corpus = f.read().splitlines()
 
-    keysents = sentence_summarizer.summarize(corpus, topk=10)
-    keysents = reduce(concat, keysents, [])
-    for index, rank, sentence in keysents:
-        print(f"{rank:.8f} {sentence} [{index}]")
+if __name__ == "__main__":
+    with open(f"./nlp/{sys.argv[1]}.txt") as f:
+        corpus = f.read().splitlines()
 
-    print()
+        keysents = sentence_summarizer.summarize(corpus, topk=10)
+        keysents = reduce(concat, keysents, [])
+        for index, rank, sentence in keysents:
+            print(f"{rank:.8f} {sentence} [{index}]")
 
-    keywords = keyword_summarizer.summarize(corpus, topk=30)
-    for word, rank in keywords:
-        print(f"{rank:.8f} {word}")
+        print()
+
+        keywords = keyword_summarizer.summarize(corpus, topk=30)
+        for word, rank in keywords:
+            print(f"{rank:.8f} {word}")
