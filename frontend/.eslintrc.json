@@ -10,8 +10,7 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
+    "plugin:import/recommended",
     "react-app",
     "react-app/jest",
     "prettier"
@@ -26,6 +25,12 @@
     "sort-keys-fix"
   ],
   "rules": {
+    "sort-imports": [
+      "warn",
+      {
+        "ignoreDeclarationSort": true
+      }
+    ],
     "sort-keys-fix/sort-keys-fix": [
       "warn",
       "asc",
@@ -105,8 +110,7 @@
       },
       "extends": [
         "eslint:recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
+        "plugin:import/recommended",
         "react-app",
         "react-app/jest",
         "plugin:@typescript-eslint/recommended",
