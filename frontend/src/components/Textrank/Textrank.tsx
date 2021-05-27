@@ -1,22 +1,26 @@
 import React from 'react';
 
 import {
-  Textarea,
+  Box,
   Button,
+  CircularProgress,
   Stack,
   Table,
+  Tbody,
+  Td,
+  Textarea,
+  Th,
   Thead,
   Tr,
-  Th,
-  Td,
-  Tbody,
 } from '@chakra-ui/react';
 
 import { Api } from '../../utils/api';
 
 import data from './data';
 
-const SampleButtons: React.FC<{ onClick: any }> = ({ onClick }) => {
+const SampleButtons: React.FC<{
+  onClick: React.Dispatch<React.SetStateAction<string>>;
+}> = ({ onClick }) => {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const key = (event.target as HTMLButtonElement).textContent;
     onClick(data[key as keyof typeof data].join('\n'));
@@ -50,13 +54,16 @@ interface TextrankReponse {
 
 const Textrank: React.FC = () => {
   const [text, setText] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
   const [rankedText, setRankedText] = React.useState({} as TextrankReponse);
 
   const handleClick = async () => {
+    setIsLoading(true);
     const { data: response } = await Api.textrank<TextrankReponse>(
       text.split('\n')
     );
     setRankedText(response);
+    setIsLoading(false);
   };
 
   return (
@@ -64,12 +71,27 @@ const Textrank: React.FC = () => {
       <Stack direction="row">
         <SampleButtons onClick={setText} />
         <Stack flex={1}>
-          <Textarea
-            rows={20}
-            size="sm"
-            value={text}
-            onChange={(event) => setText(event.target.value)}
-          />
+          <Box pos="relative">
+            {isLoading && (
+              <Box
+                alignItems="center"
+                bgColor="blackAlpha.500"
+                d="flex"
+                h="100%"
+                justifyContent="center"
+                pos="absolute"
+                w="100%"
+              >
+                <CircularProgress isIndeterminate />
+              </Box>
+            )}
+            <Textarea
+              rows={20}
+              size="sm"
+              value={text}
+              onChange={(event) => setText(event.target.value)}
+            />
+          </Box>
           <Button colorScheme="purple" isFullWidth={true} onClick={handleClick}>
             Post
           </Button>
