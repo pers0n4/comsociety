@@ -9,11 +9,7 @@ import {
   Link as RouterLink,
 } from 'react-router-dom';
 
-import ChangePassword from './components/ChangePassword';
-import Login from './components/Login';
-import Map from './components/Map';
-import MyPage from './components/MyPage';
-import NoticeBoard from './components/NoticeBoard';
+import Chatbot from './components/Chatbot';
 import Roadview from './components/Roadview';
 import Signup from './components/Signup';
 import Container from './components/layouts/Container';
@@ -60,12 +56,7 @@ const App: React.FC = () => {
       <Container>
         {/* <Map /> */}
         {/* <Roadview /> */}
-        <div style={{ height: '500px', width: '500px' }}>
-          <a href="https://frogue.danbee.ai/?chatbot_id=b8ae9956-4a10-4c88-bda3-dd59697377bf">
-            <Icon as={IoLogoSnapchat} />
-            Chatbot
-          </a>
-        </div>
+        <Chatbot />
       </Container>
     </ChakraProvider>
   );
