@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { ChakraProvider, Button, Link } from '@chakra-ui/react';
+import { ChakraProvider, Icon, Button, Link } from '@chakra-ui/react';
+import { IoLogoSnapchat } from 'react-icons/io';
 import {
   BrowserRouter as Router,
   Switch,
@@ -58,7 +59,13 @@ const App: React.FC = () => {
       <Header />
       <Container>
         {/* <Map /> */}
-        <Roadview />
+        {/* <Roadview /> */}
+        <div style={{ height: '500px', width: '500px' }}>
+          <a href="https://frogue.danbee.ai/?chatbot_id=b8ae9956-4a10-4c88-bda3-dd59697377bf">
+            <Icon as={IoLogoSnapchat} />
+            Chatbot
+          </a>
+        </div>
       </Container>
     </ChakraProvider>
   );
