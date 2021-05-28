@@ -48,8 +48,8 @@ const SampleButtons: React.FC<{
 };
 
 interface TextrankReponse {
-  keywords: string[];
-  sentences: string[];
+  keywords: [string, number][];
+  sentences: [string, number, string][];
 }
 
 const Textrank: React.FC = () => {
@@ -105,10 +105,10 @@ const Textrank: React.FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {rankedText?.sentences?.map((item) => (
+                {rankedText?.sentences?.map(([, rank, sentence]) => (
                   <Tr>
-                    <Td>{item[1]}</Td>
-                    <Td>{item[2]}</Td>
+                    <Td>{rank} </Td>
+                    <Td>{sentence}</Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -121,10 +121,10 @@ const Textrank: React.FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {rankedText?.keywords?.map((item) => (
+                {rankedText?.keywords?.map(([word, rank]) => (
                   <Tr>
-                    <Td>{item[1]}</Td>
-                    <Td>{item[0]}</Td>
+                    <Td>{rank}</Td>
+                    <Td>{word}</Td>
                   </Tr>
                 ))}
               </Tbody>
