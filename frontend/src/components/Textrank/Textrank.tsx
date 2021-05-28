@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 
 import { Api } from '../../utils/api';
+import WordCloud from '../WordCloud';
 
 import data from './data';
 
@@ -130,6 +131,15 @@ const Textrank: React.FC = () => {
               </Tbody>
             </Table>
           </Stack>
+
+          {rankedText?.keywords && (
+            <WordCloud
+              words={rankedText?.keywords?.map(([word, rank]) => ({
+                text: word,
+                value: rank,
+              }))}
+            />
+          )}
         </Stack>
       </Stack>
     </>
