@@ -14,6 +14,7 @@ import Roadview from './components/Roadview';
 import Signup from './components/Signup';
 import Container from './components/layouts/Container';
 import Header from './components/layouts/Header';
+import { Read, Write } from './pages/article';
 import Board from './pages/board';
 import Home from './pages/home';
 
@@ -52,9 +53,8 @@ const App: React.FC = () => {
             </Route>
             <Route component={Home} exact path="/" />
             <Route component={Board} path="/board" />
-            <Route path="/">
-              <Home />
-            </Route>
+            <Route component={Write} path="/articles/new" />
+            <Route component={Read} path="/articles/:id" />
           </Switch>
         </Container>
       </Router> */}
