@@ -55,7 +55,9 @@
           "parent",
           "sibling",
           "index",
-          ["object", "unknown"]
+          "type",
+          "object",
+          "unknown"
         ],
         "pathGroups": [
           {
