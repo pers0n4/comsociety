@@ -107,7 +107,7 @@ const Textrank: React.FC = () => {
               </Thead>
               <Tbody>
                 {rankedText?.sentences?.map(([, rank, sentence]) => (
-                  <Tr>
+                  <Tr key={sentence}>
                     <Td>{rank} </Td>
                     <Td>{sentence}</Td>
                   </Tr>
@@ -123,7 +123,7 @@ const Textrank: React.FC = () => {
               </Thead>
               <Tbody>
                 {rankedText?.keywords?.map(([word, rank]) => (
-                  <Tr>
+                  <Tr key={word}>
                     <Td>{rank}</Td>
                     <Td>{word}</Td>
                   </Tr>
