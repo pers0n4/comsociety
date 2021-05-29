@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { ChakraProvider, Icon, Button, Link } from '@chakra-ui/react';
+import { Button, ChakraProvider, Icon, Link } from '@chakra-ui/react';
 import { IoLogoSnapchat } from 'react-icons/io';
 import {
-  BrowserRouter as Router,
-  Switch,
   Route,
+  BrowserRouter as Router,
   Link as RouterLink,
+  Switch,
 } from 'react-router-dom';
 
 import Chatbot from './components/Chatbot';
@@ -14,6 +14,7 @@ import Roadview from './components/Roadview';
 import Signup from './components/Signup';
 import Container from './components/layouts/Container';
 import Header from './components/layouts/Header';
+import Board from './pages/board';
 import Home from './pages/home';
 
 const App: React.FC = () => {
@@ -21,6 +22,9 @@ const App: React.FC = () => {
     <ChakraProvider>
       {/* <Router>
         <Header>
+          <Link as={RouterLink} to="/board">
+            <Button variant="ghost">Board</Button>
+          </Link>
           <Link as={RouterLink} to="/signup">
             <Button variant="ghost">Signup</Button>
           </Link>
@@ -46,6 +50,8 @@ const App: React.FC = () => {
             <Route path="/changepassword">
               <ChangePassword />
             </Route>
+            <Route component={Home} exact path="/" />
+            <Route component={Board} path="/board" />
             <Route path="/">
               <Home />
             </Route>
