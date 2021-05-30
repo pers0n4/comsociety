@@ -1,22 +1,27 @@
 import React from 'react';
 
 import {
-  Textarea,
+  Box,
   Button,
+  CircularProgress,
   Stack,
   Table,
+  Tbody,
+  Td,
+  Textarea,
+  Th,
   Thead,
   Tr,
-  Th,
-  Td,
-  Tbody,
 } from '@chakra-ui/react';
 
 import { Api } from '../../utils/api';
+import WordCloud from '../WordCloud';
 
 import data from './data';
 
-const SampleButtons: React.FC<{ onClick: any }> = ({ onClick }) => {
+const SampleButtons: React.FC<{
+  onClick: React.Dispatch<React.SetStateAction<string>>;
+}> = ({ onClick }) => {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const key = (event.target as HTMLButtonElement).textContent;
     onClick(data[key as keyof typeof data].join('\n'));
@@ -44,19 +49,22 @@ const SampleButtons: React.FC<{ onClick: any }> = ({ onClick }) => {
 };
 
 interface TextrankReponse {
-  keywords: string[];
-  sentences: string[];
+  keywords: [string, number][];
+  sentences: [string, number, string][];
 }
 
 const Textrank: React.FC = () => {
   const [text, setText] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
   const [rankedText, setRankedText] = React.useState({} as TextrankReponse);
 
   const handleClick = async () => {
+    setIsLoading(true);
     const { data: response } = await Api.textrank<TextrankReponse>(
       text.split('\n')
     );
     setRankedText(response);
+    setIsLoading(false);
   };
 
   return (
@@ -64,12 +72,27 @@ const Textrank: React.FC = () => {
       <Stack direction="row">
         <SampleButtons onClick={setText} />
         <Stack flex={1}>
-          <Textarea
-            rows={20}
-            size="sm"
-            value={text}
-            onChange={(event) => setText(event.target.value)}
-          />
+          <Box pos="relative">
+            {isLoading && (
+              <Box
+                alignItems="center"
+                bgColor="blackAlpha.500"
+                d="flex"
+                h="100%"
+                justifyContent="center"
+                pos="absolute"
+                w="100%"
+              >
+                <CircularProgress isIndeterminate />
+              </Box>
+            )}
+            <Textarea
+              rows={20}
+              size="sm"
+              value={text}
+              onChange={(event) => setText(event.target.value)}
+            />
+          </Box>
           <Button colorScheme="purple" isFullWidth={true} onClick={handleClick}>
             Post
           </Button>
@@ -83,10 +106,10 @@ const Textrank: React.FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {rankedText?.sentences?.map((item) => (
-                  <Tr>
-                    <Td>{item[1]}</Td>
-                    <Td>{item[2]}</Td>
+                {rankedText?.sentences?.map(([, rank, sentence]) => (
+                  <Tr key={sentence}>
+                    <Td>{rank} </Td>
+                    <Td>{sentence}</Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -99,15 +122,24 @@ const Textrank: React.FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {rankedText?.keywords?.map((item) => (
-                  <Tr>
-                    <Td>{item[1]}</Td>
-                    <Td>{item[0]}</Td>
+                {rankedText?.keywords?.map(([word, rank]) => (
+                  <Tr key={word}>
+                    <Td>{rank}</Td>
+                    <Td>{word}</Td>
                   </Tr>
                 ))}
               </Tbody>
             </Table>
           </Stack>
+
+          {rankedText?.keywords && (
+            <WordCloud
+              words={rankedText?.keywords?.map(([word, rank]) => ({
+                text: word,
+                value: rank,
+              }))}
+            />
+          )}
         </Stack>
       </Stack>
     </>

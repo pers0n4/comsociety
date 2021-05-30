@@ -1,7 +1,8 @@
-import type { AxiosResponse } from 'axios';
 import axios from 'axios';
 
-const BASE_URL = 'http://dongyoung.kim:8000/';
+import type { AxiosResponse } from 'axios';
+
+const BASE_URL = process.env.REACT_APP_API;
 
 const api = axios.create({
   baseURL: BASE_URL,
