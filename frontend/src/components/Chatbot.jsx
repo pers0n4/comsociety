@@ -17,7 +17,7 @@ const Chatbot = () => {
   return (
     <div
       class="position-right-bottom"
-      data-chatbot="b8ae9956-4a10-4c88-bda3-dd59697377bf"
+      data-chatbot="c6964afb-5ea3-465c-ac7e-a0a21bdb8eb8"
       data-init-key="value"
       data-user="jeff131@naver.com"
       id="frogue-container"
