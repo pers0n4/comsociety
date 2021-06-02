@@ -1,20 +1,53 @@
 import React from 'react';
 
 import {
-  Input,
-  Stack,
-  InputGroup,
-  InputLeftAddon,
-  Flex,
-  Center,
-  Text,
   Button,
+  Center,
   Checkbox,
   Container,
   Divider,
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  Stack,
+  Text,
+  useToast,
 } from '@chakra-ui/react';
+import { useHistory } from 'react-router-dom';
+
+import { useAuthDispatch } from '../context/Auth';
+import api from '../utils/api';
+
+import type { AuthState } from '../context/Auth/Context';
 
 const Login: React.FC = () => {
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const toast = useToast();
+  const history = useHistory();
+  const dispatch = useAuthDispatch();
+
+  const handleLogin = () => {
+    api
+      .post<AuthState>('/auth/', {
+        password,
+        user_id: username,
+      })
+      .then((response) => {
+        dispatch(response.data);
+        history.push('/');
+      })
+      .catch((error: Error) => {
+        toast({
+          description: error.message,
+          isClosable: true,
+          status: 'error',
+        });
+      });
+  };
+
   return (
     <Stack spacing={4}>
       <Center>
@@ -27,20 +60,39 @@ const Login: React.FC = () => {
             <Center>
               <InputGroup size="md" w="md">
                 <InputLeftAddon children="ID" w="100px" />
-                <Input placeholder="ID" type="ID" />
+                <Input
+                  placeholder="ID"
+                  type="ID"
+                  value={username}
+                  onChange={(event) => {
+                    setUsername(event.target.value);
+                  }}
+                />
               </InputGroup>
             </Center>
 
             <Center>
               <InputGroup size="md" w="md">
                 <InputLeftAddon children="Password" w="100px" />
-                <Input placeholder="Password" type="Password" />
+                <Input
+                  placeholder="Password"
+                  type="Password"
+                  value={password}
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
+                />
               </InputGroup>
             </Center>
           </Stack>
 
           <Stack>
-            <Button colorScheme="blue" h="90px" variant="solid">
+            <Button
+              colorScheme="blue"
+              h="90px"
+              variant="solid"
+              onClick={handleLogin}
+            >
               Login
             </Button>
           </Stack>

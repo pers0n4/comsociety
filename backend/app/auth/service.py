@@ -12,7 +12,7 @@ class AuthService:
         self._user_repository = UserRepository(db.session)
 
     def create_token(self, data) -> dict:
-        user = self._user_repository.find_one(email=data["email"])
+        user = self._user_repository.find_one(user_id=data["user_id"])
         if user is None:
             # user not found
             raise RuntimeError
@@ -26,7 +26,6 @@ class AuthService:
                 "iat": datetime.utcnow(),
                 "exp": datetime.utcnow() + timedelta(minutes=60),
                 "user_id": str(user.id),
-                "email": user.email,
             },
             current_app.config["SECRET_KEY"],
             algorithm="HS512",
@@ -56,7 +55,6 @@ class AuthService:
                 "iat": datetime.utcnow(),
                 "exp": datetime.utcnow() + timedelta(minutes=60),
                 "user_id": str(user.id),
-                "email": user.email,
             },
             current_app.config["SECRET_KEY"],
             algorithm="HS512",

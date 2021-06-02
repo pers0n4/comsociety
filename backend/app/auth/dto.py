@@ -2,7 +2,7 @@ from marshmallow import Schema, fields
 
 
 class TokenCreateSchema(Schema):
-    email = fields.Email(required=True, load_only=True)
+    user_id = fields.String(required=True, load_only=True)
     password = fields.String(required=True, load_only=True)
 
     class Meta:

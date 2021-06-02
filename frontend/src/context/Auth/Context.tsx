@@ -1,7 +1,10 @@
 import React from 'react';
 
-type AuthState = string;
-type AuthDispatch = React.Dispatch<React.SetStateAction<string>>;
+export type AuthState = {
+  access_token: string;
+  refresh_token: string;
+};
+type AuthDispatch = React.Dispatch<React.SetStateAction<AuthState>>;
 
 const AuthContext = React.createContext<AuthState | undefined>(undefined);
 const DispatchContext = React.createContext<AuthDispatch>(() => {
@@ -13,7 +16,7 @@ interface Props {
 }
 
 export const AuthProvider: React.FC<Props> = ({ children }: Props) => {
-  const [state, dispatch] = React.useState('');
+  const [state, dispatch] = React.useState({} as AuthState);
 
   return (
     <AuthContext.Provider value={state}>
