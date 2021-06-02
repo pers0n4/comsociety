@@ -16,7 +16,12 @@ class PostRepository(SQLAlchemyRepository):
 
     def find_all(self, **kwargs) -> List[Post]:
         with self.session_factory() as session:
-            posts = session.query(Post).filter_by(**kwargs).all()
+            posts = (
+                session.query(Post)
+                .filter_by(**kwargs)
+                .order_by(Post.created_at.desc())
+                .all()
+            )
             return posts
 
     def find_one(self, **kwargs) -> Optional[Post]:
