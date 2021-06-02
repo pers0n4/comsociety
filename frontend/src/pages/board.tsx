@@ -21,7 +21,8 @@ const Board: React.FC = () => {
   const history = useHistory();
 
   React.useEffect(() => {
-    api.get<Article[]>('/posts').then((response) => {
+    api.get<Article[]>('/posts/').then((response) => {
+      console.log(response.data.map((item) => item.created_at));
       setArticles(response.data);
     });
   }, []);
@@ -34,7 +35,7 @@ const Board: React.FC = () => {
       <Table>
         <Thead>
           <Tr>
-            <Th>제목</Th>
+            <Th w="100%">제목</Th>
             <Th>작성일</Th>
           </Tr>
         </Thead>
@@ -44,6 +45,7 @@ const Board: React.FC = () => {
                 <Tr
                   key={article.id}
                   _hover={{ background: 'blackAlpha.200' }}
+                  whiteSpace="nowrap"
                   onClick={() => history.push(`/articles/${article.id}`)}
                 >
                   <Td>{article.subject}</Td>
