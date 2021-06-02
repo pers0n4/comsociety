@@ -8,8 +8,10 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import ChangePassword from './components/ChangePassword';
 import Chatbot from './components/Chatbot';
 import Login from './components/Login';
+import MyPage from './components/MyPage';
 import Roadview from './components/Roadview';
 import Signup from './components/Signup';
 import Container from './components/layouts/Container';
@@ -39,24 +41,13 @@ const App: React.FC = () => {
 
         <Container>
           <Switch>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            {/* <Route path="/mypage">
-              <MyPage />
-            </Route>
-            <Route path="/changepassword">
-              <ChangePassword />
-            </Route> */}
-            <Route path="/">
-              <Home />
-            </Route>
             <Route component={Home} exact path="/" />
-            <Route component={Roadview} path="/roadview" />
+            <Route component={Signup} path="/signup" />
+            <Route component={Login} path="/login" />
+            <Route component={MyPage} path="/mypage" />
+            <Route component={ChangePassword} path="/changepassword" />
             <Route component={Board} path="/board" />
+            <Route component={Roadview} path="/roadview" />
             <Route component={Write} path="/articles/new" />
             <Route component={Read} path="/articles/:id" />
           </Switch>
