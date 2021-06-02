@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Button, ChakraProvider, Icon, Link } from '@chakra-ui/react';
-import { IoLogoSnapchat } from 'react-icons/io';
+import { Button, ChakraProvider, Link } from '@chakra-ui/react';
 import {
   Route,
   BrowserRouter as Router,
@@ -10,11 +9,7 @@ import {
 } from 'react-router-dom';
 
 import Chatbot from './components/Chatbot';
-import ChangePassword from './components/ChangePassword';
 import Login from './components/Login';
-import Map from './components/Map';
-import MyPage from './components/MyPage';
-import NoticeBoard from './components/NoticeBoard';
 import Roadview from './components/Roadview';
 import Signup from './components/Signup';
 import Container from './components/layouts/Container';
@@ -26,7 +21,7 @@ import Home from './pages/home';
 const App: React.FC = () => {
   return (
     <ChakraProvider>
-      {/* <Router>
+      <Router>
         <Header>
           <Link as={RouterLink} to="/board">
             <Button variant="ghost">Board</Button>
@@ -43,42 +38,31 @@ const App: React.FC = () => {
         </Header>
 
         <Container>
-          <Switch>es
+          <Switch>
             <Route path="/signup">
               <Signup />
             </Route>
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="/mypage">
+            {/* <Route path="/mypage">
               <MyPage />
             </Route>
             <Route path="/changepassword">
               <ChangePassword />
-            </Route>
+            </Route> */}
             <Route path="/">
               <Home />
             </Route>
             <Route component={Home} exact path="/" />
+            <Route component={Roadview} path="/roadview" />
             <Route component={Board} path="/board" />
             <Route component={Write} path="/articles/new" />
             <Route component={Read} path="/articles/:id" />
           </Switch>
+          <Chatbot />
         </Container>
       </Router>
-
-      <Header />
-      <Container>
-        {/* <Map /> */}
-        {/* <Roadview /> */}
-        <Chatbot />
-        <div style={{ height: '500px', width: '500px' }}>
-          <a href="https://frogue.danbee.ai/?chatbot_id=b8ae9956-4a10-4c88-bda3-dd59697377bf">
-            <Icon as={IoLogoSnapchat} />
-            Chatbot
-          </a>
-        </div>
-      </Container>
     </ChakraProvider>
   );
 };
