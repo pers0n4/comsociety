@@ -36,6 +36,7 @@ const Board: React.FC = () => {
         <Thead>
           <Tr>
             <Th w="100%">제목</Th>
+            <Th>작성자</Th>
             <Th>작성일</Th>
           </Tr>
         </Thead>
@@ -49,6 +50,7 @@ const Board: React.FC = () => {
                   onClick={() => history.push(`/articles/${article.id}`)}
                 >
                   <Td>{article.subject}</Td>
+                  <Td>{article.author_id}</Td>
                   <Td>
                     {format(parseJSON(article.created_at), 'yyyy-MM-dd HH:mm')}
                   </Td>

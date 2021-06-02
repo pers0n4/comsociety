@@ -30,11 +30,27 @@ const AuthRoute = () => {
 
   const handleLogout = () => {
     dispatch({} as AuthState);
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
   };
+
+  React.useEffect(() => {
+    const token = {
+      access_token: localStorage.getItem('access_token') ?? '',
+      refresh_token: localStorage.getItem('refresh_token') ?? '',
+    };
+
+    if (token.access_token && token.refresh_token) {
+      dispatch(token);
+    }
+  }, []);
 
   if (auth.access_token) {
     return (
       <>
+        <Link as={RouterLink} to="/mypage">
+          <Button variant="ghost">MyPage</Button>
+        </Link>
         <Button variant="ghost" onClick={handleLogout}>
           Logout
         </Button>
@@ -44,14 +60,11 @@ const AuthRoute = () => {
 
   return (
     <>
-      <Link as={RouterLink} to="/signup">
-        <Button variant="ghost">Signup</Button>
-      </Link>
       <Link as={RouterLink} to="/login">
         <Button variant="ghost">Login</Button>
       </Link>
-      <Link as={RouterLink} to="/mypage">
-        <Button variant="ghost">MyPage</Button>
+      <Link as={RouterLink} to="/signup">
+        <Button variant="ghost">Signup</Button>
       </Link>
     </>
   );

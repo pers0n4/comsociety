@@ -3,10 +3,19 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 
 import React from 'react';
 
-import { Box, Button, CircularProgress, Input, Stack } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Input,
+  Stack,
+  useToast,
+} from '@chakra-ui/react';
 import { Editor } from '@toast-ui/react-editor';
+import jwt from 'jsonwebtoken';
 import { useHistory } from 'react-router-dom';
 
+import { useAuth } from '../../context/Auth';
 import api from '../../utils/api';
 
 const ArticleWrite: React.FC = () => {
@@ -14,8 +23,27 @@ const ArticleWrite: React.FC = () => {
   const [isLoading, setIsLoading] = React.useState(false);
 
   const editorRef = React.useRef({} as Editor);
+  const auth = useAuth();
 
   const hisotry = useHistory();
+  const toast = useToast();
+
+  const [userInfo, setUserInfo] = React.useState<any>(undefined);
+
+  React.useEffect(() => {
+    if (!auth.access_token) {
+      toast({
+        description: '글을 쓰기 전 먼저 로그인해주세요',
+        isClosable: true,
+        status: 'error',
+      });
+
+      hisotry.push('/login');
+    }
+
+    setUserInfo(jwt.decode(auth.access_token));
+    console.log(jwt.decode(auth.access_token));
+  }, [auth]);
 
   const handlePost = () => {
     setIsLoading(true);
@@ -25,7 +53,7 @@ const ArticleWrite: React.FC = () => {
     // HACK: author id
     api
       .post('/posts/', {
-        author_id: 'efca10df-cf51-4f41-9bc2-09df149165f3',
+        author_id: userInfo.user_id,
         content: article.getMarkdown(),
         subject,
       })

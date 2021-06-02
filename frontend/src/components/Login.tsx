@@ -36,6 +36,8 @@ const Login: React.FC = () => {
         user_id: username,
       })
       .then((response) => {
+        localStorage.setItem('access_token', response.data.access_token);
+        localStorage.setItem('refresh_token', response.data.refresh_token);
         dispatch(response.data);
         history.push('/');
       })
