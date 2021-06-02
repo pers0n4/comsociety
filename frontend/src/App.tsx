@@ -15,6 +15,7 @@ import Login from './components/Login';
 import MyPage from './components/MyPage';
 import Roadview from './components/Roadview';
 import Signup from './components/Signup';
+import Textrank from './components/Textrank';
 import Container from './components/layouts/Container';
 import Header from './components/layouts/Header';
 import { AuthProvider, useAuth, useAuthDispatch } from './context/Auth';
@@ -90,6 +91,7 @@ const App: React.FC = () => {
               <Route component={MyPage} path="/mypage" />
               <Route component={ChangePassword} path="/changepassword" />
               <Route component={Board} path="/board" />
+              <Route component={Textrank} path="/textrank" />
               <Route component={Roadview} path="/roadview" />
               <Route component={Directions} path="/directions" />
               <Route component={Write} path="/articles/new" />
