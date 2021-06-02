@@ -10,6 +10,7 @@ import {
 
 import ChangePassword from './components/ChangePassword';
 import Chatbot from './components/Chatbot';
+import Directions from './components/Directions';
 import Login from './components/Login';
 import MyPage from './components/MyPage';
 import Roadview from './components/Roadview';
@@ -48,6 +49,7 @@ const App: React.FC = () => {
             <Route component={ChangePassword} path="/changepassword" />
             <Route component={Board} path="/board" />
             <Route component={Roadview} path="/roadview" />
+            <Route component={Directions} path="/directions" />
             <Route component={Write} path="/articles/new" />
             <Route component={Read} path="/articles/:id" />
           </Switch>
