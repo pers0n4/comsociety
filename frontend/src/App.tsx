@@ -9,6 +9,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import Chatbot from './components/Chatbot';
 import ChangePassword from './components/ChangePassword';
 import Login from './components/Login';
 import Map from './components/Map';
@@ -25,7 +26,7 @@ import Home from './pages/home';
 const App: React.FC = () => {
   return (
     <ChakraProvider>
-      <Router>
+      {/* <Router>
         <Header>
           <Link as={RouterLink} to="/board">
             <Button variant="ghost">Board</Button>
@@ -42,7 +43,7 @@ const App: React.FC = () => {
         </Header>
 
         <Container>
-          <Switch>
+          <Switch>es
             <Route path="/signup">
               <Signup />
             </Route>
@@ -70,6 +71,7 @@ const App: React.FC = () => {
       <Container>
         {/* <Map /> */}
         {/* <Roadview /> */}
+        <Chatbot />
         <div style={{ height: '500px', width: '500px' }}>
           <a href="https://frogue.danbee.ai/?chatbot_id=b8ae9956-4a10-4c88-bda3-dd59697377bf">
             <Icon as={IoLogoSnapchat} />
