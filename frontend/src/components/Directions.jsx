@@ -1,6 +1,5 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import './map.css';
-const { kakao } = window;
 
 const Directions = () => {
   const [kakaoContainer, setKakaoContainer] = React.useState();
@@ -9,6 +8,15 @@ const Directions = () => {
   const [kakaoRv, setKakaoRv] = React.useState();
   const [kakaoRvClient, setKakaoRvClient] = React.useState();
   const [isOverlayOn, setIsOverlayOn] = React.useState(false);
+
+  React.useEffect(() => {
+    const script = document.createElement('script');
+
+    script.src = '/kakao.js';
+    script.async = true;
+
+    document.body.appendChild(script);
+  }, []);
 
   // // 전달받은 좌표(position)에 가까운 로드뷰의 파노라마 ID를 추출하여
   // // 로드뷰를 설정하는 함수입니다
