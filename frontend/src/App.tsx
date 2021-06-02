@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Button, ChakraProvider, Link } from '@chakra-ui/react';
+import { Button, ChakraProvider, Icon, Link } from '@chakra-ui/react';
+import { IoLogoSnapchat } from 'react-icons/io';
 import {
   Route,
   BrowserRouter as Router,
@@ -8,8 +9,12 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import ChangePassword from './components/ChangePassword';
 import Login from './components/Login';
-// import MyPage from './components/MyPage';
+import Map from './components/Map';
+import MyPage from './components/MyPage';
+import NoticeBoard from './components/NoticeBoard';
+import Roadview from './components/Roadview';
 import Signup from './components/Signup';
 import Container from './components/layouts/Container';
 import Header from './components/layouts/Header';
@@ -31,6 +36,9 @@ const App: React.FC = () => {
           <Link as={RouterLink} to="/login">
             <Button variant="ghost">Login</Button>
           </Link>
+          <Link as={RouterLink} to="/mypage">
+            <Button variant="ghost">MyPage</Button>
+          </Link>
         </Header>
 
         <Container>
@@ -41,6 +49,15 @@ const App: React.FC = () => {
             <Route path="/login">
               <Login />
             </Route>
+            <Route path="/mypage">
+              <MyPage />
+            </Route>
+            <Route path="/changepassword">
+              <ChangePassword />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
             <Route component={Home} exact path="/" />
             <Route component={Board} path="/board" />
             <Route component={Write} path="/articles/new" />
@@ -48,6 +65,18 @@ const App: React.FC = () => {
           </Switch>
         </Container>
       </Router>
+
+      <Header />
+      <Container>
+        {/* <Map /> */}
+        {/* <Roadview /> */}
+        <div style={{ height: '500px', width: '500px' }}>
+          <a href="https://frogue.danbee.ai/?chatbot_id=b8ae9956-4a10-4c88-bda3-dd59697377bf">
+            <Icon as={IoLogoSnapchat} />
+            Chatbot
+          </a>
+        </div>
+      </Container>
     </ChakraProvider>
   );
 };
