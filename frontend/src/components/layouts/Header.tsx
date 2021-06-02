@@ -2,15 +2,16 @@ import React from 'react';
 
 import {
   Flex,
+  Heading,
+  IconButton,
+  Link,
   chakra,
   useColorMode,
   useColorModeValue,
-  IconButton,
-  Heading,
-  Link,
 } from '@chakra-ui/react';
 import { useViewportScroll } from 'framer-motion';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { Link as RouterLink } from 'react-router-dom';
 
 const ToggleColorModeButton = () => {
   const { toggleColorMode } = useColorMode();
@@ -36,7 +37,7 @@ const HeaderContent: React.FC = ({ children }) => {
     <>
       <Flex align="center" h="100%" justify="space-between" px="6" w="100%">
         <Flex align="center">
-          <Link href="/">
+          <Link as={RouterLink} to="/">
             <Heading size="xl">Comsociety</Heading>
           </Link>
         </Flex>
