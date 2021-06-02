@@ -10,6 +10,11 @@ import {
 } from 'react-router-dom';
 
 import Chatbot from './components/Chatbot';
+import ChangePassword from './components/ChangePassword';
+import Login from './components/Login';
+import Map from './components/Map';
+import MyPage from './components/MyPage';
+import NoticeBoard from './components/NoticeBoard';
 import Roadview from './components/Roadview';
 import Signup from './components/Signup';
 import Container from './components/layouts/Container';
@@ -38,7 +43,7 @@ const App: React.FC = () => {
         </Header>
 
         <Container>
-          <Switch>
+          <Switch>es
             <Route path="/signup">
               <Signup />
             </Route>
@@ -51,18 +56,28 @@ const App: React.FC = () => {
             <Route path="/changepassword">
               <ChangePassword />
             </Route>
+            <Route path="/">
+              <Home />
+            </Route>
             <Route component={Home} exact path="/" />
             <Route component={Board} path="/board" />
             <Route component={Write} path="/articles/new" />
             <Route component={Read} path="/articles/:id" />
           </Switch>
         </Container>
-      </Router> */}
+      </Router>
+
       <Header />
       <Container>
         {/* <Map /> */}
         {/* <Roadview /> */}
         <Chatbot />
+        <div style={{ height: '500px', width: '500px' }}>
+          <a href="https://frogue.danbee.ai/?chatbot_id=b8ae9956-4a10-4c88-bda3-dd59697377bf">
+            <Icon as={IoLogoSnapchat} />
+            Chatbot
+          </a>
+        </div>
       </Container>
     </ChakraProvider>
   );

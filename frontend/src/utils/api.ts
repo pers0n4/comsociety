@@ -1,5 +1,6 @@
-import type { AxiosResponse } from 'axios';
 import axios from 'axios';
+
+import type { AxiosResponse } from 'axios';
 
 const BASE_URL = process.env.REACT_APP_API;
 

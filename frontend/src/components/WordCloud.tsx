@@ -1,7 +1,8 @@
 import React from 'react';
 
-import type { Word } from 'react-wordcloud';
 import ReactWordcloud from 'react-wordcloud';
+
+import type { Word } from 'react-wordcloud';
 
 interface Props {
   words: Word[];
