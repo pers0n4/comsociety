@@ -29,6 +29,9 @@ const SampleButtons: React.FC<{
 
   return (
     <Stack>
+      <Button colorScheme="blue" size="xs" onClick={handleClick}>
+        news1
+      </Button>
       <Button size="xs" onClick={handleClick}>
         elisabeth
       </Button>
