@@ -112,18 +112,6 @@ const Login: React.FC = () => {
           <Container>
             <Checkbox>로그인 유지</Checkbox>
           </Container>
-
-          <Stack direction={['column', 'row']} spacing="10px">
-            <Button colorScheme="blue" variant="solid" w="40">
-              회원가입
-            </Button>
-            <Button colorScheme="blue" variant="solid" w="40">
-              아이디 찾기
-            </Button>
-            <Button colorScheme="blue" variant="solid" w="40">
-              비밀번호 찾기
-            </Button>
-          </Stack>
         </Stack>
       </Center>
     </Stack>
